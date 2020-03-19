@@ -5,7 +5,9 @@
       color="primary"
       dark
     >
-      <v-toolbar-title>Page title</v-toolbar-title>
+      <v-toolbar-title>
+        {{ title }}
+      </v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -16,9 +18,16 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import store from './store';
 
 export default Vue.extend({
   name: 'App',
+
+  computed: {
+    title() {
+      return store.state.home.title;
+    },
+  },
 
   data: () => ({
     //

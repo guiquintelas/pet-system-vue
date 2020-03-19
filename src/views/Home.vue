@@ -10,7 +10,7 @@
       </v-col>
 
       <v-col cols="4">
-        <v-btn>Salvar</v-btn>
+        <v-btn @click="saveTitle">Salvar</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -19,6 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import store from '@/store';
 
 export default Vue.extend({
   name: 'Home',
@@ -26,5 +27,11 @@ export default Vue.extend({
   data: () => ({
     title: 'Placeholder',
   }),
+
+  methods: {
+    saveTitle() {
+      store.commit.SET_TITLE(this.title);
+    },
+  },
 });
 </script>
