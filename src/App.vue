@@ -8,6 +8,23 @@
       <v-toolbar-title>
         {{ title }}
       </v-toolbar-title>
+
+      <v-btn
+        class="ml-5"
+        depressed
+        exact
+        color="primary"
+        :to="{ name: 'home' }">
+        Home
+      </v-btn>
+
+      <v-btn
+        class="ml-3"
+        depressed
+        color="primary"
+        :to="{ name: 'user' }">
+        Users
+      </v-btn>
     </v-app-bar>
 
     <v-content>
