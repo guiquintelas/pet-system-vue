@@ -28,9 +28,5 @@ export default Vue.extend({
       return store.state.home.title;
     },
   },
-
-  data: () => ({
-    //
-  }),
 });
 </script>
