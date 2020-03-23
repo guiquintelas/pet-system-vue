@@ -2,12 +2,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { createDirectStore } from 'direct-vuex';
-import home from './home.module';
+import main from './main.module';
 
 Vue.use(Vuex);
 const { store, rootActionContext, moduleActionContext } = createDirectStore({
   modules: {
-    home,
+    main,
   },
 });
 

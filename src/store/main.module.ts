@@ -6,7 +6,7 @@ export interface HomeState {
 
 export default defineModule({
   state: {
-    title: 'Placeholder',
+    title: 'PetSystem',
   } as HomeState,
 
   mutations: {

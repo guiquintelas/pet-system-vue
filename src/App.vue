@@ -44,7 +44,7 @@ export default Vue.extend({
 
   computed: {
     title() {
-      return store.state.home.title;
+      return store.state.main.title;
     },
   },
 });
