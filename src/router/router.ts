@@ -1,8 +1,41 @@
-import Vue from 'vue';
+import Vue, { ComponentOptions } from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
+import { PageType } from '@/types/pet-model-page';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
+
+function usePetModelRoute(
+  name: string,
+  component: ComponentOptions<Vue> | typeof Vue | Vue.AsyncComponent,
+) {
+  return {
+    path: `/${name}`,
+    name,
+    component,
+    props: {
+      type: PageType.List,
+    },
+
+    children: [
+      {
+        path: '/create',
+        component,
+        props: {
+          type: PageType.Create,
+        },
+      },
+      {
+        path: '/:modelId/update/',
+        component,
+        props: {
+          type: PageType.Update,
+        },
+      },
+    ],
+  };
+}
+
 
 const routes = [
   {
@@ -10,11 +43,7 @@ const routes = [
     name: 'home',
     component: Home,
   },
-  {
-    path: '/user',
-    name: 'user',
-    component: () => import('../views/User.vue'),
-  },
+  usePetModelRoute('user', () => import('../views/User.vue')),
 ] as RouteConfig[];
 
 const router = new VueRouter({

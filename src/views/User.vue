@@ -1,42 +1,42 @@
 <template>
-  <PetPage title="Users">
-    <v-row align="baseline">
-      <v-col cols="4">
-        <v-text-field
-          v-model="title"
-          outlined
-          label="Teste"
-        ></v-text-field>
-      </v-col>
-
-      <v-col cols="4">
-        <v-btn @click="saveTitle">Salvar</v-btn>
-      </v-col>
-    </v-row>
-  </PetPage>
+  <PetModelPage
+    title="Users"
+    newModelBtnText="New User"
+    module="user"
+    :headers="headers"
+    :type="type"
+  ></PetModelPage>
 </template>
 
 
 <script lang="ts">
 import Vue from 'vue';
-import store from '@/store/store';
-import PetPage from '@/components/PetPage.vue';
+import PetModelPage from '@/components/PetModelPage.vue';
+import { DataTableHeader } from 'vuetify';
 
 export default Vue.extend({
-  name: 'Home',
+  name: 'User',
 
   components: {
-    PetPage,
+    PetModelPage,
+  },
+
+  props: {
+    type: String,
   },
 
   data: () => ({
-    title: 'Placeholder',
+    headers: [
+      { text: 'ID', value: 'id' },
+      { text: 'Name', value: 'name' },
+      { text: 'Email', value: 'email' },
+      { text: 'Password', value: 'password' },
+      { text: 'Actions' },
+    ] as DataTableHeader[],
   }),
 
   methods: {
-    saveTitle() {
-      store.commit.SET_TITLE(this.title);
-    },
+    //
   },
 });
 </script>

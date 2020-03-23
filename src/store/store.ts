@@ -3,11 +3,14 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { createDirectStore } from 'direct-vuex';
 import main from './main.module';
+import user from './user.module';
+
 
 Vue.use(Vuex);
 const { store, rootActionContext, moduleActionContext } = createDirectStore({
   modules: {
     main,
+    user,
   },
 });
 
