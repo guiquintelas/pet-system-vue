@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import store from '@/store';
+import store from '@/store/store';
 import PetPage from '@/components/PetPage.vue';
 
 export default Vue.extend({
