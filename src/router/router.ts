@@ -9,31 +9,30 @@ function usePetModelRoute(
   name: string,
   component: ComponentOptions<Vue> | typeof Vue | Vue.AsyncComponent,
 ) {
-  return {
-    path: `/${name}`,
-    name,
-    component,
-    props: {
-      type: PageType.List,
+  return [
+    {
+      path: `/${name}`,
+      name,
+      component,
+      props: {
+        type: PageType.List,
+      },
     },
-
-    children: [
-      {
-        path: '/create',
-        component,
-        props: {
-          type: PageType.Create,
-        },
+    {
+      path: `/${name}/create`,
+      component,
+      props: {
+        type: PageType.Create,
       },
-      {
-        path: '/:modelId/update/',
-        component,
-        props: {
-          type: PageType.Update,
-        },
+    },
+    {
+      path: `/${name}/:modelId/update/`,
+      component,
+      props: {
+        type: PageType.Update,
       },
-    ],
-  };
+    },
+  ];
 }
 
 
@@ -43,7 +42,13 @@ const routes = [
     name: 'home',
     component: Home,
   },
-  usePetModelRoute('user', () => import('../views/User.vue')),
+
+  ...usePetModelRoute('user', () => import('../views/User.vue')),
+
+  {
+    path: '*',
+    redirect: '/',
+  },
 ] as RouteConfig[];
 
 const router = new VueRouter({
