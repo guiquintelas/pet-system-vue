@@ -50,7 +50,7 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .slide-fade-enter-active {
   transition: all .15s ease;
 }
