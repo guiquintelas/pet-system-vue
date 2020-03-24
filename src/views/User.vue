@@ -33,6 +33,8 @@ export default Vue.extend({
       { text: 'Password', value: 'password' },
       { text: 'Actions' },
     ] as DataTableHeader[],
+
+    ...useValidations(),
   }),
 
   methods: {
