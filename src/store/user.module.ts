@@ -13,6 +13,7 @@ export interface State<ModelType> {
 
 
 export default defineModule({
+  namespaced: true,
   state: {
     models: [
       {
