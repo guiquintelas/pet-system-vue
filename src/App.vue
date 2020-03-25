@@ -110,6 +110,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+html {
+  overflow: auto !important;
+}
+
 .slide-fade-enter-active {
   transition: all .15s ease;
 }
