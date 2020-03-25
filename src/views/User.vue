@@ -7,6 +7,7 @@
     :type="type"
     :initModel="initModel"
     @create="onCreate"
+    @delete="onDelete"
   >
     <template v-slot="{ model }">
       <v-row>
@@ -76,7 +77,6 @@ export default Vue.extend({
       { text: 'Name', value: 'name' },
       { text: 'Email', value: 'email' },
       { text: 'Password', value: 'password' },
-      { text: 'Actions' },
     ] as DataTableHeader[],
 
     ...useValidations(),
@@ -92,6 +92,13 @@ export default Vue.extend({
     onCreate(model: User) {
       store.commit.user.ADD(model);
     },
+
+    onUpdate(model: User) {
+      store.commit.user.UPDATE(model);
+    },
+
+    onDelete(model: User) {
+      store.commit.user.DELETE(model);
     },
   },
 });

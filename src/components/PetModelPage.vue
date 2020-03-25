@@ -23,10 +23,33 @@
       <v-row v-if="type == 'list'" key="list">
         <v-col>
           <v-data-table
-            :headers="headers"
+            :headers="headersWithActions"
             :items="$store.direct.state[module].models"
-            class="elevation-1"
-          ></v-data-table>
+            class="elevation-1">
+            <template v-slot:item.actions="{ item }">
+              <v-tooltip top class="mr-1">
+                <template v-slot:activator="{ on }">
+                  <v-icon
+                      v-on="on"
+                      @click="$router.push(`${module}/${item.id}/update`)">
+                      edit
+                  </v-icon>
+                </template>
+                Update
+              </v-tooltip>
+
+              <v-tooltip top class="mr-1">
+                <template v-slot:activator="{ on }">
+                  <v-icon
+                      v-on="on"
+                      @click="onDelete(item)">
+                      delete
+                  </v-icon>
+                </template>
+                Delete
+              </v-tooltip>
+            </template>
+            </v-data-table>
         </v-col>
       </v-row>
 
@@ -70,9 +93,11 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Vue from 'vue';
 import PetPage from '@/components/PetPage.vue';
 import { DataTableHeader } from 'vuetify';
+import store from '@/store/store';
 import { PageType } from '../types/pet-model-page';
 
 export default Vue.extend({
@@ -95,6 +120,15 @@ export default Vue.extend({
     model: {},
   }),
 
+  computed: {
+    headersWithActions(): DataTableHeader[] {
+      return [
+        ...this.headers,
+        { text: 'Actions', sortable: false, value: 'actions' },
+      ];
+    },
+  },
+
   created() {
     if (this.initModel) {
       this.model = this.initModel();
@@ -111,13 +145,19 @@ export default Vue.extend({
 
   methods: {
     submit() {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if (!(this.$refs.form as any).validate()) {
         return;
       }
 
       this.$emit('create', this.model);
       this.$router.push(`/${this.module}`);
+    },
+
+    onDelete(item: any) {
+      store.commit.confirm.OPEN({
+        text: 'Are you sure you want to delete this entity?',
+        okFunction: () => this.$emit('delete', item),
+      });
     },
   },
 });
