@@ -32,6 +32,61 @@
         <router-view></router-view>
       </transition>
     </v-content>
+
+    <!-- CONFIRM POP UP -->
+    <v-dialog
+      v-model="confirm.dlg"
+      max-width="500px">
+      <v-card>
+        <v-toolbar
+          dark
+          :color="(confirm.type == 'warning') ? 'red lighten-1' : 'blue lighten-1'"
+          dense
+          flat>
+          <v-toolbar-title class="white--text">Confirm</v-toolbar-title>
+        </v-toolbar>
+
+        <v-card-text class="py-0">
+          <v-container class="max-container" grid-list-md>
+          <v-layout row wrap py-4>
+            <v-flex xs2 pl-4>
+              <v-icon
+                v-if="confirm.type == 'warning'"
+                large
+                color="red lighten-1">
+                warning
+              </v-icon>
+
+              <v-icon v-else large color="blue lighten-1">
+                help
+              </v-icon>
+            </v-flex>
+
+            <v-flex xs10 pa-4 style="margin: auto" v-html="confirm.text"></v-flex>
+          </v-layout>
+          </v-container>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="grey"
+            text
+            @click.native="$store.direct.commit.confirm.CLOSE()">
+            CANCEL
+          </v-btn>
+
+          <v-btn
+            color="primary darken-1"
+            text
+            @click="confirm.okFunction(); $store.direct.commit.confirm.CLOSE()">
+            CONTINUE
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- CONFIRM POP UP -->
   </v-app>
 </template>
 
@@ -45,6 +100,10 @@ export default Vue.extend({
   computed: {
     title() {
       return store.state.main.title;
+    },
+
+    confirm() {
+      return store.state.confirm;
     },
   },
 });

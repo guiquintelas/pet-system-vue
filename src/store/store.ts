@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import { createDirectStore } from 'direct-vuex';
 import main from './main.module';
 import user from './user.module';
+import confirm from './confirm.module';
 
 
 Vue.use(Vuex);
@@ -11,6 +12,7 @@ const { store, rootActionContext, moduleActionContext } = createDirectStore({
   modules: {
     main,
     user,
+    confirm,
   },
 });
 
