@@ -38,7 +38,7 @@ export default defineModule({
   } as State<User>,
 
   mutations: {
-    ADD_MODEL(state, model: User) {
+    ADD(state, model: User) {
       state.models.push(model);
     },
   },

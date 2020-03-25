@@ -90,7 +90,8 @@ export default Vue.extend({
     },
 
     onCreate(model: User) {
-      store.commit.user.ADD_MODEL(model);
+      store.commit.user.ADD(model);
+    },
     },
   },
 });
