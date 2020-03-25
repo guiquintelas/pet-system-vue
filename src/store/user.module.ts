@@ -41,5 +41,14 @@ export default defineModule({
     ADD(state, model: User) {
       state.models.push(model);
     },
+
+    UPDATE(state, model: User) {
+      const index = state.models.findIndex((el) => el.id === model.id);
+      state.models[index] = model;
+    },
+
+    DELETE(state, model: User) {
+      state.models = state.models.filter((el) => el.id !== model.id);
+    },
   },
 });
