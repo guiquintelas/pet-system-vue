@@ -2,6 +2,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { createDirectStore } from 'direct-vuex';
+import main from './modules/main.module';
+import user from './modules/user.module';
+import confirm from './modules/confirm.module';
 import snack from './modules/snack.module';
 
 
