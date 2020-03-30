@@ -90,15 +90,23 @@ export default Vue.extend({
     },
 
     onCreate(model: User) {
-      store.commit.user.ADD(model);
+      store.commit.snack.OPEN({
+        text: `User ${model.name} created successfully!`,
+      });
     },
 
     onUpdate(model: User) {
       store.commit.user.UPDATE(model);
+      store.commit.snack.OPEN({
+        text: `User ${model.name} updated successfully`,
+      });
     },
 
     onDelete(model: User) {
       store.commit.user.DELETE(model);
+      store.commit.snack.OPEN({
+        text: `User ${model.name} deleted successfully`,
+      });
     },
   },
 });

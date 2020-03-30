@@ -87,6 +87,19 @@
       </v-card>
     </v-dialog>
     <!-- CONFIRM POP UP -->
+
+    <!-- AVISO SNACK -->
+    <v-snackbar
+      v-model="snack.isOpen"
+      :color="(snack.type == 'warning') ? 'error' : ''">
+        {{ snack.text }}
+        <v-btn
+          text
+          @click="$store.direct.commit.snack.CLOSE()">
+          Fechar
+        </v-btn>
+    </v-snackbar>
+    <!-- AVISO SNACK -->
   </v-app>
 </template>
 
@@ -104,6 +117,10 @@ export default Vue.extend({
 
     confirm() {
       return store.state.confirm;
+    },
+
+    snack() {
+      return store.state.snack;
     },
   },
 });
