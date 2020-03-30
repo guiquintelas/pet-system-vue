@@ -53,11 +53,15 @@
         </v-col>
       </v-row>
 
-      <v-row v-if="type == 'create'" key="create">
+      <v-row v-if="type == 'create' || type == 'update'" key="form">
         <v-col>
           <v-card>
-            <v-card-title>
+            <v-card-title v-if="type == 'create'">
               <h3>Creating new <span class="text-capitalize">{{ module }}</span></h3>
+            </v-card-title>
+
+            <v-card-title v-else>
+              <h3>Updating <span class="text-capitalize">{{ module }}</span></h3>
             </v-card-title>
 
             <v-card-text>
@@ -133,6 +137,10 @@ export default Vue.extend({
     if (this.initModel) {
       this.model = this.initModel();
     }
+
+    if (this.type === 'update') {
+      this.fetchModel();
+    }
   },
 
   watch: {
@@ -140,16 +148,26 @@ export default Vue.extend({
       if (this.initModel) {
         this.model = this.initModel();
       }
+
+      if (this.type === 'update') {
+        this.fetchModel();
+      }
     },
   },
 
   methods: {
+    fetchModel() {
+      const { modelId } = this.$route.params;
+      const [model] = store.state[this.module].models.filter((el: any) => el.id === modelId);
+      this.model = model;
+    },
+
     submit() {
       if (!(this.$refs.form as any).validate()) {
         return;
       }
 
-      this.$emit('create', this.model);
+      this.$emit(this.type, this.model);
       this.$router.push(`/${this.module}`);
     },
 

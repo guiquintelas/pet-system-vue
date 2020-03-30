@@ -7,6 +7,7 @@
     :type="type"
     :initModel="initModel"
     @create="onCreate"
+    @update="onUpdate"
     @delete="onDelete"
   >
     <template v-slot="{ model }">
@@ -17,6 +18,8 @@
             outlined
             v-model="model.id"
             readonly
+            :hint="type == 'create' ? 'Automatically generated' : ''"
+            persistent-hint
           ></v-text-field>
         </v-col>
 
@@ -58,7 +61,7 @@ import PetModelPage from '@/components/PetModelPage.vue';
 import { DataTableHeader } from 'vuetify';
 import { useValidations } from '@/hooks/validations';
 import store from '@/store/store';
-import { User } from '../store/user.module';
+import { User } from '../store/modules/user.module';
 
 export default Vue.extend({
   name: 'User',
