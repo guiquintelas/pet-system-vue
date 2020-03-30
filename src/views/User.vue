@@ -12,7 +12,7 @@
   >
     <template v-slot="{ model }">
       <v-row>
-        <v-col>
+        <v-col cols="6" sm="4" md="3" >
           <v-text-field
             label="ID"
             outlined
@@ -23,7 +23,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="4" md="3" >
           <v-text-field
             label="Name"
             outlined
@@ -32,7 +32,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="4" md="3" >
           <v-text-field
             label="Email"
             outlined
@@ -41,7 +41,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="4" md="3" >
           <v-text-field
             label="Password"
             outlined
