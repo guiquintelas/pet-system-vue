@@ -10,20 +10,13 @@
       </v-toolbar-title>
 
       <v-btn
+        v-for="menu in menus" :key="menu.name"
         class="ml-5"
         depressed
         exact
         color="primary"
-        :to="{ name: 'home' }">
-        Home
-      </v-btn>
-
-      <v-btn
-        class="ml-3"
-        depressed
-        color="primary"
-        :to="{ name: 'user' }">
-        Users
+        :to="{ name: menu.name }">
+        {{ menu.text }}
       </v-btn>
     </v-app-bar>
 
@@ -113,6 +106,10 @@ export default Vue.extend({
   computed: {
     title() {
       return store.state.main.title;
+    },
+
+    menus() {
+      return store.state.main.menus;
     },
 
     confirm() {

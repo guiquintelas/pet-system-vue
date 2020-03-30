@@ -1,13 +1,21 @@
 import { defineModule } from 'direct-vuex';
 
-export interface HomeState {
+export interface State {
   title: string;
+  menus: Array<{
+    name: string;
+    text: string;
+  }>;
 }
 
 export default defineModule({
   state: {
     title: 'PetSystem',
-  } as HomeState,
+    menus: [
+      { name: 'home', text: 'Home' },
+      { name: 'user', text: 'Users' },
+    ],
+  } as State,
 
   mutations: {
     SET_TITLE(state, title: string) {
