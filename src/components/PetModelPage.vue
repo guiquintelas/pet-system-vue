@@ -18,6 +18,7 @@
           <v-icon left>mdi-arrow-left</v-icon>
           GO BACK
         </v-btn>
+
       </v-col>
     </v-row>
 
@@ -50,6 +51,10 @@
                 </template>
                 Delete
               </v-tooltip>
+            </template>
+
+            <template v-for="(_, slot) of $scopedSlots" v-slot:[slot]="scope">
+              <slot :name="slot" v-bind="scope"/>
             </template>
           </v-data-table>
         </v-col>
@@ -104,6 +109,7 @@ import Vue from 'vue';
 import PetPage from '@/components/PetPage.vue';
 import { DataTableHeader } from 'vuetify';
 import store from '@/store/store';
+import _ from 'lodash';
 import { PageType } from '../types/pet-model-page';
 
 export default Vue.extend({
@@ -132,6 +138,13 @@ export default Vue.extend({
         ...this.headers,
         { text: 'Actions', sortable: false, value: 'actions' },
       ];
+    },
+
+    tableSlots(): any {
+      const itemSlotsKeys = Object.keys(this.$scopedSlots)
+        .filter((slotName) => slotName.indexOf('item.') > -1);
+
+      return _.pick(this.$scopedSlots, itemSlotsKeys);
     },
   },
 
