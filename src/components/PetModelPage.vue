@@ -32,7 +32,7 @@
                   <v-icon
                       v-on="on"
                       @click="$router.push(`${module}/${item.id}/update`)">
-                      edit
+                      mdi-pencil
                   </v-icon>
                 </template>
                 Update
@@ -43,13 +43,13 @@
                   <v-icon
                       v-on="on"
                       @click="onDelete(item)">
-                      delete
+                      mdi-delete
                   </v-icon>
                 </template>
                 Delete
               </v-tooltip>
             </template>
-            </v-data-table>
+          </v-data-table>
         </v-col>
       </v-row>
 
