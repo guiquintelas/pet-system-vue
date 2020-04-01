@@ -7,6 +7,7 @@
           exact
           color="primary"
           :to="`${module}/create`">
+          <v-icon left>mdi-plus</v-icon>
           {{ newModelBtnText }}
         </v-btn>
 
@@ -14,6 +15,7 @@
           v-else
           exact
           :to="`/${module}`">
+          <v-icon left>mdi-arrow-left</v-icon>
           GO BACK
         </v-btn>
       </v-col>
