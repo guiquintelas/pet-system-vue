@@ -93,6 +93,7 @@ export default Vue.extend({
     },
 
     onCreate(model: User) {
+      store.commit.user.ADD(model);
       store.commit.snack.OPEN({
         text: `User ${model.name} created successfully!`,
       });
