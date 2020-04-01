@@ -14,6 +14,7 @@ export default defineModule({
     menus: [
       { name: 'home', text: 'Home' },
       { name: 'user', text: 'Users' },
+      { name: 'coupon', text: 'Coupons' },
     ],
   } as State,
 
