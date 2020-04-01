@@ -47,11 +47,11 @@
                 v-if="confirm.type == 'warning'"
                 large
                 color="red lighten-1">
-                warning
+                mdi-alert
               </v-icon>
 
               <v-icon v-else large color="blue lighten-1">
-                help
+                mid-help-circle
               </v-icon>
             </v-flex>
 
