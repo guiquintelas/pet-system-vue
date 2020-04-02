@@ -136,7 +136,9 @@ export default Vue.extend({
     headersWithActions(): DataTableHeader[] {
       return [
         ...this.headers,
-        { text: 'Actions', sortable: false, value: 'actions' },
+        {
+          text: 'Actions', sortable: false, value: 'actions', align: 'end',
+        },
       ];
     },
 
