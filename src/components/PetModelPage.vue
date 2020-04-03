@@ -3,6 +3,7 @@
     <v-row>
       <v-col>
         <v-btn
+          key="btn-new"
           v-if="type == 'list'"
           exact
           color="primary"
@@ -12,6 +13,7 @@
         </v-btn>
 
         <v-btn
+          key="btn-back"
           v-else
           exact
           @click="backPage()">
