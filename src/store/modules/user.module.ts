@@ -1,6 +1,5 @@
 import { defineModule } from 'direct-vuex';
-import { PetModelModule } from '@/types/pet-model-module';
-import { addPetModelMutations } from '@/types/pet-model-page';
+import { addPetModelMutations, addPetModelGetters } from '@/types/pet-model-module';
 
 export type User = {
   id: string;
@@ -32,6 +31,10 @@ export default defineModule<PetModelModule<User>>({
         password: 'teste',
       },
     ],
+  },
+
+  getters: {
+    ...addPetModelGetters<User>(),
   },
 
   mutations: {
