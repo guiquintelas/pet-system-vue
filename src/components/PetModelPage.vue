@@ -14,7 +14,7 @@
         <v-btn
           v-else
           exact
-          :to="`/${module}`">
+          @click="backPage()">
           <v-icon left>mdi-arrow-left</v-icon>
           GO BACK
         </v-btn>
@@ -85,7 +85,7 @@
               <v-btn
                 text
                 exact
-                :to="`/${module}`">
+                @click="backPage()">
                 CANCEL
               </v-btn>
 
@@ -193,6 +193,10 @@ export default Vue.extend({
         text: 'Are you sure you want to delete this entity?',
         okFunction: () => this.$emit('delete', item),
       });
+    },
+
+    backPage() {
+      window.history.back();
     },
   },
 });
