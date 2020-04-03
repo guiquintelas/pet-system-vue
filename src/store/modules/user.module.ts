@@ -8,24 +8,24 @@ export type User = {
   password: string;
 }
 
-export default defineModule<PetModelModule<User>>({
+export default defineModule({
   namespaced: true,
   state: {
     models: [
       {
-        id: 'teste',
+        id: 'guilherme',
         name: 'Guilherme Frota',
         email: 'guiquintelas96@gmail.com',
         password: 'teste',
       },
       {
-        id: 'teste-2',
+        id: 'daniel',
         name: 'Daniel',
         email: 'daniel@gmail.com',
         password: 'teste',
       },
       {
-        id: 'teste-3',
+        id: 'gabi',
         name: 'Gabi',
         email: 'gabi@gmail.com',
         password: 'teste',
