@@ -1,5 +1,6 @@
 import { defineModule } from 'direct-vuex';
 import { PetModelModule } from '@/types/pet-model-module';
+import { addPetModelMutations } from '@/types/pet-model-page';
 
 export type User = {
   id: string;
@@ -34,17 +35,6 @@ export default defineModule<PetModelModule<User>>({
   },
 
   mutations: {
-    ADD(state, model: User) {
-      state.models.push(model);
-    },
-
-    UPDATE(state, model: User) {
-      const index = state.models.findIndex((el) => el.id === model.id);
-      state.models[index] = model;
-    },
-
-    DELETE(state, model: User) {
-      state.models = state.models.filter((el) => el.id !== model.id);
-    },
+    ...addPetModelMutations<User>(),
   },
 });

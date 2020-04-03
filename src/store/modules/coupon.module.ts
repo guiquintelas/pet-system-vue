@@ -1,11 +1,13 @@
 import { defineModule } from 'direct-vuex';
 import { PetModelModule } from '@/types/pet-model-module';
+import { addPetModelMutations } from '@/types/pet-model-page';
 
 export type Coupon = {
   id: string;
   code: string;
   discount: number;
 }
+
 
 export default defineModule<PetModelModule<Coupon>>({
   namespaced: true,
@@ -30,17 +32,6 @@ export default defineModule<PetModelModule<Coupon>>({
   },
 
   mutations: {
-    ADD(state, model: Coupon) {
-      state.models.push(model);
-    },
-
-    UPDATE(state, model: Coupon) {
-      const index = state.models.findIndex((el) => el.id === model.id);
-      state.models[index] = model;
-    },
-
-    DELETE(state, model: Coupon) {
-      state.models = state.models.filter((el) => el.id !== model.id);
-    },
+    ...addPetModelMutations<Coupon>(),
   },
 });
