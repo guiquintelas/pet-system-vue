@@ -26,6 +26,11 @@ export default store as typeof store & {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [name: string]: any;
   };
+
+  getters: typeof store['state'] & {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [name: string]: any;
+  };
 };
 // The following exports will be used to enable types in the
 // implementation of actions.
