@@ -1,6 +1,7 @@
 import { defineModule } from 'direct-vuex';
 import { addPetModelMutations, addPetModelGetters } from '@/types/pet-model-module';
 
+
 export type User = {
   id: string;
   name: string;

@@ -7,6 +7,7 @@ import user from './modules/user.module';
 import confirm from './modules/confirm.module';
 import snack from './modules/snack.module';
 import coupon from './modules/coupon.module';
+import pet from './modules/pet.module';
 
 
 Vue.use(Vuex);
@@ -17,6 +18,7 @@ const { store, rootActionContext, moduleActionContext } = createDirectStore({
     confirm,
     snack,
     coupon,
+    pet,
   },
 });
 

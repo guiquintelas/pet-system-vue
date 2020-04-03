@@ -15,6 +15,7 @@ export default defineModule({
       { name: 'home', text: 'Home' },
       { name: 'user', text: 'Users' },
       { name: 'coupon', text: 'Coupons' },
+      { name: 'pet', text: 'Pets' },
     ],
   } as State,
 
