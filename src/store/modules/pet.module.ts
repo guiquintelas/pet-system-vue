@@ -4,7 +4,7 @@ import { addPetModelMutations } from '@/types/pet-model-module';
 export enum PetType {
   Cat = 'Cat',
   Dog = 'Dog',
-  Mice = 'Mice'
+  Mouse = 'Mouse'
 }
 
 export type Pet = {
@@ -33,7 +33,7 @@ export default defineModule({
       {
         id: Math.random().toString(36).substring(3, 8),
         name: 'Ameno',
-        type: PetType.Mice,
+        type: PetType.Mouse,
         ownerId: 'gabi',
       },
     ],
