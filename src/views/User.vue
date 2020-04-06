@@ -51,6 +51,10 @@
         </v-col>
       </v-row>
     </template>
+
+    <template v-slot:item.createdAt="{ value }">
+      {{ value | formatDate }}
+    </template>
   </PetModelPage>
 </template>
 
@@ -58,6 +62,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import PetModelPage from '@/components/PetModelPage.vue';
+import { useFilters } from '@/hooks/filters';
 import { DataTableHeader } from 'vuetify';
 import { useValidations } from '@/hooks/validations';
 import store from '@/store/store';
@@ -68,6 +73,10 @@ export default Vue.extend({
 
   components: {
     PetModelPage,
+  },
+
+  filters: {
+    ...useFilters(),
   },
 
   props: {
@@ -94,21 +103,21 @@ export default Vue.extend({
     },
 
     onCreate(model: User) {
-      store.commit.user.ADD(model);
+      store.dispatch.user.ADD(model);
       store.commit.snack.OPEN({
         text: `User ${model.name} created successfully!`,
       });
     },
 
     onUpdate(model: User) {
-      store.commit.user.UPDATE(model);
+      store.dispatch.user.UPDATE(model);
       store.commit.snack.OPEN({
         text: `User ${model.name} updated successfully`,
       });
     },
 
     onDelete(model: User) {
-      store.commit.user.DELETE(model);
+      store.dispatch.user.DELETE(model);
       store.commit.snack.OPEN({
         text: `User ${model.name} deleted successfully`,
       });

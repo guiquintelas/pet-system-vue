@@ -1,5 +1,5 @@
 import { defineModule } from 'direct-vuex';
-import { addPetModelMutations } from '@/types/pet-model-module';
+import { addPetModelMutations, addPetModelActions } from '@/types/pet-model-module';
 
 export enum PetType {
   Cat = 'Cat',
@@ -41,5 +41,9 @@ export default defineModule({
 
   mutations: {
     ...addPetModelMutations<Pet>(),
+  },
+
+  actions: {
+    ...addPetModelActions(),
   },
 });

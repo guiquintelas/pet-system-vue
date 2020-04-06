@@ -1,5 +1,6 @@
 import { defineModule } from 'direct-vuex';
-import { addPetModelMutations, addPetModelGetters } from '@/types/pet-model-module';
+import { addPetModelMutations, addPetModelGetters, addPetModelActions } from '@/types/pet-model-module';
+import { rootActionContext } from '../store';
 
 
 export type User = {
@@ -44,5 +45,14 @@ export default defineModule({
 
   mutations: {
     ...addPetModelMutations<User>(),
+  },
+
+  actions: {
+    ...addPetModelActions(),
+
+    ADD(ctx, model: User) {
+      [model.createdAt] = (new Date()).toISOString().split('T');
+      ctx.commit('ADD', model);
+    },
   },
 });

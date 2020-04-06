@@ -87,21 +87,21 @@ export default Vue.extend({
     },
 
     onCreate(model: Coupon) {
-      store.commit.coupon.ADD(model);
+      store.dispatch.coupon.ADD(model);
       store.commit.snack.OPEN({
         text: `Coupon ${model.code} created successfully!`,
       });
     },
 
     onUpdate(model: Coupon) {
-      store.commit.coupon.UPDATE(model);
+      store.dispatch.coupon.UPDATE(model);
       store.commit.snack.OPEN({
         text: `Coupon ${model.code} updated successfully`,
       });
     },
 
     onDelete(model: Coupon) {
-      store.commit.coupon.DELETE(model);
+      store.dispatch.coupon.DELETE(model);
       store.commit.snack.OPEN({
         text: `Coupon ${model.code} deleted successfully`,
       });

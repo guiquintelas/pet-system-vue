@@ -1,3 +1,5 @@
+import { ActionContext } from 'vuex';
+
 export interface PetModel {
   id: string;
 }
@@ -19,6 +21,22 @@ export function addPetModelMutations<T extends PetModel>() {
 
     DELETE(state: PetState<T>, model: T) {
       state.models = state.models.filter((el) => el.id !== model.id);
+    },
+  };
+}
+
+export function addPetModelActions<T extends PetModel>() {
+  return {
+    ADD(ctx: ActionContext<any, any>, model: T) {
+      ctx.commit('ADD', model);
+    },
+
+    UPDATE(ctx: ActionContext<any, any>, model: T) {
+      ctx.commit('UPDATE', model);
+    },
+
+    DELETE(ctx: ActionContext<any, any>, model: T) {
+      ctx.commit('DELETE', model);
     },
   };
 }

@@ -1,5 +1,7 @@
 import { defineModule } from 'direct-vuex';
-import { PetState, addPetModelMutations, addPetModelGetters } from '@/types/pet-model-module';
+import {
+  PetState, addPetModelMutations, addPetModelGetters, addPetModelActions,
+} from '@/types/pet-model-module';
 
 export type Coupon = {
   id: string;
@@ -36,5 +38,9 @@ export default defineModule({
 
   mutations: {
     ...addPetModelMutations<Coupon>(),
+  },
+
+  actions: {
+    ...addPetModelActions(),
   },
 });

@@ -42,7 +42,7 @@
           ></v-select>
         </v-col>
 
-        <v-col cols="6" sm="4" md="3" >
+        <v-col cols="6" sm="4" md="3">
           <v-autocomplete
             outlined
             label="Owner"
@@ -109,21 +109,21 @@ export default Vue.extend({
     },
 
     onCreate(model: Pet) {
-      store.commit.pet.ADD(model);
+      store.dispatch.pet.ADD(model);
       store.commit.snack.OPEN({
         text: `Pet ${model.name} created successfully!`,
       });
     },
 
     onUpdate(model: Pet) {
-      store.commit.pet.UPDATE(model);
+      store.dispatch.pet.UPDATE(model);
       store.commit.snack.OPEN({
         text: `Pet ${model.name} updated successfully`,
       });
     },
 
     onDelete(model: Pet) {
-      store.commit.pet.DELETE(model);
+      store.dispatch.pet.DELETE(model);
       store.commit.snack.OPEN({
         text: `Pet ${model.name} deleted successfully`,
       });
