@@ -91,21 +91,21 @@ export default Vue.extend({
 
   methods: {
     onCreate(model: User) {
-      store.dispatch.user.ADD(model);
+      store.dispatch.user.add(model);
       store.commit.snack.OPEN({
         text: `User ${model.name} created successfully!`,
       });
     },
 
     onUpdate(model: User) {
-      store.dispatch.user.UPDATE(model);
+      store.dispatch.user.update(model);
       store.commit.snack.OPEN({
         text: `User ${model.name} updated successfully`,
       });
     },
 
     onDelete(model: User) {
-      store.dispatch.user.DELETE(model);
+      store.dispatch.user.delete(model);
       store.commit.snack.OPEN({
         text: `User ${model.name} deleted successfully`,
       });

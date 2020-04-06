@@ -109,21 +109,21 @@ export default Vue.extend({
     },
 
     onCreate(model: Pet) {
-      store.dispatch.pet.ADD(model);
+      store.dispatch.pet.add(model);
       store.commit.snack.OPEN({
         text: `Pet ${model.name} created successfully!`,
       });
     },
 
     onUpdate(model: Pet) {
-      store.dispatch.pet.UPDATE(model);
+      store.dispatch.pet.update(model);
       store.commit.snack.OPEN({
         text: `Pet ${model.name} updated successfully`,
       });
     },
 
     onDelete(model: Pet) {
-      store.dispatch.pet.DELETE(model);
+      store.dispatch.pet.delete(model);
       store.commit.snack.OPEN({
         text: `Pet ${model.name} deleted successfully`,
       });

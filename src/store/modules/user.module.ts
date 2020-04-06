@@ -1,5 +1,7 @@
 import { defineModule } from 'direct-vuex';
-import { addPetModelMutations, addPetModelGetters, addPetModelActions } from '@/types/pet-model-module';
+import {
+  addPetModelMutations, addPetModelGetters, addPetModelActions, PetState,
+} from '@/types/pet-model-module';
 
 
 export type User = {
@@ -14,7 +16,7 @@ export default defineModule({
   state: {
     models: [
       {
-        id: '62840266687',
+        id: '10112565760',
         name: 'Guilherme Frota',
         email: 'guiquintelas96@gmail.com',
         createdAt: '2020-03-10',
@@ -32,7 +34,7 @@ export default defineModule({
         createdAt: '2020-03-16',
       },
     ],
-  },
+  } as PetState<User>,
 
   getters: {
     ...addPetModelGetters<User>(),
@@ -45,13 +47,13 @@ export default defineModule({
   actions: {
     ...addPetModelActions(),
 
-    ADD(ctx, model: User) {
+    add(ctx, model: User) {
       model.id = model.id.replace('-', '').replace(/\./g, '');
       [model.createdAt] = (new Date()).toISOString().split('T');
       ctx.commit('ADD', model);
     },
 
-    UPDATE(ctx, model: User) {
+    update(ctx, model: User) {
       model.id = model.id.replace('-', '').replace(/\./g, '');
       ctx.commit('UPDATE', model);
     },
