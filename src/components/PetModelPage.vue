@@ -20,7 +20,6 @@
           <v-icon left>mdi-arrow-left</v-icon>
           GO BACK
         </v-btn>
-
       </v-col>
     </v-row>
 
@@ -155,6 +154,8 @@ export default Vue.extend({
   created() {
     if (this.initModel) {
       this.model = this.initModel();
+    } else {
+      this.model = {};
     }
 
     if (this.type === 'update') {
