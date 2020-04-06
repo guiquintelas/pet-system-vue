@@ -43,9 +43,7 @@ const routes = [
     component: Home,
   },
 
-  ...usePetModelRoute('user', () => import('@/views/User.vue')),
-  ...usePetModelRoute('coupon', () => import('@/views/Coupon.vue')),
-  ...usePetModelRoute('pet', () => import('@/views/Pet.vue')),
+  ...usePetModelRoute('vaccine', () => import('../views/Vaccine.vue')),
 
   {
     path: '*',
