@@ -9,6 +9,7 @@ import snack from './modules/snack.module';
 import coupon from './modules/coupon.module';
 import pet from './modules/pet.module';
 import vaccine from './modules/vaccine.module';
+import appointment from './modules/appointment.module';
 
 
 Vue.use(Vuex);
@@ -21,6 +22,7 @@ const { store, rootActionContext, moduleActionContext } = createDirectStore({
     coupon,
     pet,
     vaccine,
+    appointment,
   },
 });
 
