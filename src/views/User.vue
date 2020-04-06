@@ -80,6 +80,7 @@ export default Vue.extend({
       { text: 'Name', value: 'name' },
       { text: 'Email', value: 'email' },
       { text: 'Password', value: 'password' },
+      { text: 'Created At', value: 'createdAt' },
     ] as DataTableHeader[],
 
     ...useValidations(),
