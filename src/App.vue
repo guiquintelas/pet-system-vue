@@ -89,7 +89,7 @@
         <v-btn
           text
           @click="$store.direct.commit.snack.CLOSE()">
-          Fechar
+          close
         </v-btn>
     </v-snackbar>
     <!-- AVISO SNACK -->
