@@ -177,8 +177,8 @@ export default Vue.extend({
   methods: {
     fetchModel() {
       const { modelId } = this.$route.params;
-      const [model] = store.state[this.module].models.filter((el: any) => el.id === modelId);
-      this.model = model;
+      const model = store.getters[this.module].filterById(modelId);
+      this.model = _.cloneDeep(model);
     },
 
     submit() {
