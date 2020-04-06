@@ -27,7 +27,6 @@
           <v-text-field
             label="Code"
             outlined
-            type="number"
             v-model="model.code"
             :rules="[validations.required]"
           ></v-text-field>
@@ -38,7 +37,7 @@
             label="Dicount"
             outlined
             suffix="%"
-            v-model="model.email"
+            v-model="model.discount"
             :rules="[validations.required]"
           ></v-text-field>
         </v-col>

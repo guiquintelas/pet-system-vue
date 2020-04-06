@@ -22,13 +22,13 @@ export default defineModule({
         id: 'fuba',
         name: 'Fubá',
         type: PetType.Cat,
-        ownerId: '62840266687',
+        ownerId: '10112565760',
       },
       {
         id: 'miguinho',
         name: 'Miguinho',
         type: PetType.Cat,
-        ownerId: '62840266687',
+        ownerId: '10112565760',
       },
       {
         id: 'ameno',

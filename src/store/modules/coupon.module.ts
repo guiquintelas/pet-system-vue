@@ -15,7 +15,7 @@ export default defineModule({
   state: {
     models: [
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'cpu20',
         code: 'CUP20',
         discount: 20,
       },
