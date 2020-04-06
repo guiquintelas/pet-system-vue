@@ -1,10 +1,17 @@
 
 <template>
-  <router-link style="text-decoration: none" :to="{ path: `${module}/${id}/update` }">
-    <slot v-bind="model">
+  <router-link
+    v-if="model"
+    style="text-decoration: none"
+    :to="{ path: `${module}/${id}/update` }">
+    <slot v-bind:item="model">
       {{ model.name }}
     </slot>
   </router-link>
+
+  <div v-else>
+    <div class="grey--text">none</div>
+  </div>
 </template>
 
 <script lang="ts">
