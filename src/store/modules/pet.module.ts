@@ -1,5 +1,5 @@
 import { defineModule } from 'direct-vuex';
-import { addPetModelMutations, addPetModelActions } from '@/types/pet-model-module';
+import { addPetModelMutations, addPetModelActions, addPetModelGetters } from '@/types/pet-model-module';
 
 export enum PetType {
   Cat = 'Cat',
@@ -22,21 +22,25 @@ export default defineModule({
         id: Math.random().toString(36).substring(3, 8),
         name: 'Fubá',
         type: PetType.Cat,
-        ownerId: '51586803450',
+        ownerId: '62840266687',
       },
       {
         id: Math.random().toString(36).substring(3, 8),
         name: 'Miguinho',
         type: PetType.Cat,
-        ownerId: '51586803450',
+        ownerId: '62840266687',
       },
       {
         id: Math.random().toString(36).substring(3, 8),
         name: 'Ameno',
         type: PetType.Mouse,
-        ownerId: '51531523323',
+        ownerId: '37570416236',
       },
     ],
+  },
+
+  getters: {
+    ...addPetModelGetters<Pet>(),
   },
 
   mutations: {
