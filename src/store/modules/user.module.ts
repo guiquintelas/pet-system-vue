@@ -50,8 +50,14 @@ export default defineModule({
     ...addPetModelActions(),
 
     ADD(ctx, model: User) {
+      model.id = model.id.replace('-', '').replace(/\./g, '');
       [model.createdAt] = (new Date()).toISOString().split('T');
       ctx.commit('ADD', model);
+    },
+
+    UPDATE(ctx, model: User) {
+      model.id = model.id.replace('-', '').replace(/\./g, '');
+      ctx.commit('UPDATE', model);
     },
   },
 });

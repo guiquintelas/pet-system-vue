@@ -17,7 +17,7 @@
             outlined
             v-mask="masks.cpf"
             v-model="model.id"
-            :rules="[validations.required]"
+            :rules="[validations.required, validations.cpf]"
           ></v-text-field>
         </v-col>
 
@@ -48,6 +48,10 @@
           ></v-text-field>
         </v-col>
       </v-row>
+    </template>
+
+    <template v-slot:item.id="{ value }">
+      {{ value | cpf }}
     </template>
 
     <template v-slot:item.createdAt="{ value }">
