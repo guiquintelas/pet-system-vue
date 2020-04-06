@@ -17,5 +17,30 @@ export function useFilters() {
 
       return `${cpf1}.${cpf2}.${cpf3}-${cpf4}`;
     },
+
+    currency(value: number | undefined): string {
+      if (value === undefined) {
+        return '';
+      }
+
+      if (typeof value === 'string') {
+        value = parseFloat(value);
+      }
+
+      const valueString = value.toFixed(2);
+
+      const temDecimal = valueString.toString().indexOf('.') >= 0;
+
+      let result = valueString.toString().replace(/\B(?=(\d{3})+(?!\d))/g, 'ponto');
+
+      if (temDecimal) {
+        result = result.replace('.', ',');
+      } else {
+        result += ',00';
+      }
+
+      return result.replace('ponto', '.');
+    },
+
   };
 }
