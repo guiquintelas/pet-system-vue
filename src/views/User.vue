@@ -60,6 +60,7 @@ import { DataTableHeader } from 'vuetify';
 import { useValidations, useMasks } from '@/hooks';
 import store from '@/store/store';
 import { User } from '../store/modules/user.module';
+import { PageType } from '../types/pet-model-page';
 
 export default Vue.extend({
   name: 'User',
@@ -124,7 +125,7 @@ export default Vue.extend({
 
       const user = store.getters.user.filterById(cpf);
 
-      if (user) {
+      if (user && this.type !== PageType.Update) {
         return 'CPF already exists!';
       }
 
