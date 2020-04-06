@@ -19,19 +19,19 @@ export default defineModule({
   state: {
     models: [
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'fuba',
         name: 'Fubá',
         type: PetType.Cat,
         ownerId: '62840266687',
       },
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'miguinho',
         name: 'Miguinho',
         type: PetType.Cat,
         ownerId: '62840266687',
       },
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'ameno',
         name: 'Ameno',
         type: PetType.Mouse,
         ownerId: '37570416236',
@@ -41,6 +41,10 @@ export default defineModule({
 
   getters: {
     ...addPetModelGetters<Pet>(),
+
+    filterByOwner(state) {
+      return (ownerId: string) => state.models.filter((el) => el.ownerId === ownerId);
+    },
   },
 
   mutations: {
