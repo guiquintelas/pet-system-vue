@@ -68,7 +68,7 @@ import Vue from 'vue';
 import PetModelPage from '@/components/PetModelPage.vue';
 import PetLink from '@/components/PetLink.vue';
 import { DataTableHeader } from 'vuetify';
-import { useValidations } from '@/hooks/validations';
+import { useValidations } from '@/hooks';
 import store from '@/store/store';
 import { Pet, PetType } from '../store/modules/pet.module';
 

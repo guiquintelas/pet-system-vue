@@ -56,7 +56,7 @@
 import Vue from 'vue';
 import PetModelPage from '@/components/PetModelPage.vue';
 import { DataTableHeader } from 'vuetify';
-import { useValidations } from '@/hooks/validations';
+import { useValidations } from '@/hooks';
 import store from '@/store/store';
 import { Coupon } from '../store/modules/coupon.module';
 

@@ -64,7 +64,7 @@ import Vue from 'vue';
 import PetModelPage from '@/components/PetModelPage.vue';
 import { useFilters } from '@/hooks/filters';
 import { DataTableHeader } from 'vuetify';
-import { useValidations } from '@/hooks/validations';
+import { useValidations, useMasks } from '@/hooks';
 import store from '@/store/store';
 import { User } from '../store/modules/user.module';
 
@@ -93,6 +93,7 @@ export default Vue.extend({
     ] as DataTableHeader[],
 
     ...useValidations(),
+    ...useMasks(),
   }),
 
   methods: {
