@@ -1,6 +1,5 @@
 import { defineModule } from 'direct-vuex';
 import { addPetModelMutations, addPetModelGetters, addPetModelActions } from '@/types/pet-model-module';
-import { rootActionContext } from '../store';
 
 
 export type User = {
@@ -16,21 +15,21 @@ export default defineModule({
   state: {
     models: [
       {
-        id: 'guilherme',
+        id: '51586803450',
         name: 'Guilherme Frota',
         email: 'guiquintelas96@gmail.com',
         password: 'teste',
         createdAt: '2020-03-10',
       },
       {
-        id: 'daniel',
+        id: '54826627807',
         name: 'Daniel',
         email: 'daniel@gmail.com',
         password: 'teste',
         createdAt: '2020-03-13',
       },
       {
-        id: 'gabi',
+        id: '51531523323',
         name: 'Gabi',
         email: 'gabi@gmail.com',
         password: 'teste',

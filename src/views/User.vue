@@ -5,7 +5,6 @@
     module="user"
     :headers="headers"
     :type="type"
-    :initModel="initModel"
     @create="onCreate"
     @update="onUpdate"
     @delete="onDelete"
@@ -14,12 +13,11 @@
       <v-row>
         <v-col cols="6" sm="4" md="3" >
           <v-text-field
-            label="ID"
+            label="CPF"
             outlined
+            v-mask="masks.cpf"
             v-model="model.id"
-            readonly
-            :hint="type == 'create' ? 'Automatically generated' : ''"
-            persistent-hint
+            :rules="[validations.required]"
           ></v-text-field>
         </v-col>
 
@@ -85,7 +83,7 @@ export default Vue.extend({
 
   data: () => ({
     headers: [
-      { text: 'ID', value: 'id' },
+      { text: 'CPF', value: 'id' },
       { text: 'Name', value: 'name' },
       { text: 'Email', value: 'email' },
       { text: 'Password', value: 'password' },
@@ -97,12 +95,6 @@ export default Vue.extend({
   }),
 
   methods: {
-    initModel() {
-      return {
-        id: Math.random().toString(36).substring(3, 8),
-      };
-    },
-
     onCreate(model: User) {
       store.dispatch.user.ADD(model);
       store.commit.snack.OPEN({

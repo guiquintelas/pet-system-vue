@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ActionContext } from 'vuex';
 
 export interface PetModel {
