@@ -187,7 +187,7 @@ export default Vue.extend({
       }
 
       this.$emit(this.type, this.model);
-      this.$router.push(`/${this.module}`);
+      this.backPage();
     },
 
     onDelete(item: any) {
