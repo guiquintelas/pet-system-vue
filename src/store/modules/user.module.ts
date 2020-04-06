@@ -11,6 +11,10 @@ export type User = {
   createdAt: string;
 }
 
+interface UserState extends PetState<User> {
+  lastUserAdded: User | null;
+}
+
 export default defineModule({
   namespaced: true,
   state: {
@@ -34,7 +38,9 @@ export default defineModule({
         createdAt: '2020-03-16',
       },
     ],
-  } as PetState<User>,
+
+    lastUserAdded: null,
+  } as UserState,
 
   getters: {
     ...addPetModelGetters<User>(),
@@ -42,6 +48,14 @@ export default defineModule({
 
   mutations: {
     ...addPetModelMutations<User>(),
+
+    SET_LAST_ADDED(state, model) {
+      state.lastUserAdded = model;
+    },
+
+    CLEAR_LAST_ADDED(state) {
+      state.lastUserAdded = null;
+    },
   },
 
   actions: {
@@ -56,6 +70,14 @@ export default defineModule({
     update(ctx, model: User) {
       model.id = model.id.replace('-', '').replace(/\./g, '');
       ctx.commit('UPDATE', model);
+    },
+
+    setLastAdded(ctx, model: User) {
+      ctx.commit('SET_LAST_ADDED', model);
+    },
+
+    clearLastAdded(ctx) {
+      ctx.commit('CLEAR_LAST_ADDED');
     },
   },
 });

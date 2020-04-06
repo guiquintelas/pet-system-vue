@@ -5,6 +5,7 @@
     module="user"
     :headers="headers"
     :type="type"
+    :initModel="initModel"
     @create="onCreate"
     @update="onUpdate"
     @delete="onDelete"
@@ -90,8 +91,23 @@ export default Vue.extend({
   }),
 
   methods: {
+    initModel() {
+      if (this.$route.query.cpf) {
+        return {
+          id: this.$route.query.cpf,
+        };
+      }
+
+      return {};
+    },
+
     onCreate(model: User) {
       store.dispatch.user.add(model);
+
+      if (this.$route.query.cpf) {
+        store.dispatch.user.setLastAdded(model);
+      }
+
       store.commit.snack.OPEN({
         text: `User ${model.name} created successfully!`,
       });
