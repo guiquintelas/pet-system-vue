@@ -38,20 +38,11 @@
             :rules="[validations.required, validations.email]"
           ></v-text-field>
         </v-col>
-
-        <v-col cols="6" sm="4" md="3" >
-          <v-text-field
-            label="Password"
-            outlined
-            v-model="model.password"
-            :rules="[validations.required]"
-          ></v-text-field>
-        </v-col>
       </v-row>
     </template>
 
     <template v-slot:item.id="{ value }">
-      {{ value | cpf }}
+      <b>{{ value | cpf }}</b>
     </template>
 
     <template v-slot:item.createdAt="{ value }">
@@ -90,7 +81,6 @@ export default Vue.extend({
       { text: 'CPF', value: 'id' },
       { text: 'Name', value: 'name' },
       { text: 'Email', value: 'email' },
-      { text: 'Password', value: 'password' },
       { text: 'Created At', value: 'createdAt' },
     ] as DataTableHeader[],
 
