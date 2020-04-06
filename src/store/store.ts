@@ -22,8 +22,7 @@ const { store, rootActionContext, moduleActionContext } = createDirectStore({
   },
 });
 
-// Export the direct-store instead of the classic Vuex store.
-export default store as typeof store & {
+interface StoreWithGenerics {
   state: typeof store['state'] & {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [name: string]: any;
@@ -33,7 +32,11 @@ export default store as typeof store & {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [name: string]: any;
   };
-};
+}
+
+// Export the direct-store instead of the classic Vuex store.
+export default store as typeof store & StoreWithGenerics;
+
 // The following exports will be used to enable types in the
 // implementation of actions.
 export { rootActionContext, moduleActionContext };
@@ -41,6 +44,6 @@ export { rootActionContext, moduleActionContext };
 export type AppStore = typeof store
 declare module 'vuex' {
   interface Store<S> {
-    direct: AppStore;
+    direct: AppStore & StoreWithGenerics;
   }
 }
