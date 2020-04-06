@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ActionContext } from 'vuex';
+import _ from 'lodash';
 
 export interface PetModel {
   id: string;
@@ -18,6 +19,9 @@ export function addPetModelMutations<T extends PetModel>() {
     UPDATE(state: PetState<T>, model: T) {
       const index = state.models.findIndex((el) => el.id === model.id);
       state.models[index] = model;
+
+      // forces vue to update computed/data properties
+      state.models = _.cloneDeep(state.models);
     },
 
     DELETE(state: PetState<T>, model: T) {
@@ -28,15 +32,15 @@ export function addPetModelMutations<T extends PetModel>() {
 
 export function addPetModelActions<T extends PetModel>() {
   return {
-    ADD(ctx: ActionContext<any, any>, model: T) {
+    add(ctx: ActionContext<any, any>, model: T) {
       ctx.commit('ADD', model);
     },
 
-    UPDATE(ctx: ActionContext<any, any>, model: T) {
+    update(ctx: ActionContext<any, any>, model: T) {
       ctx.commit('UPDATE', model);
     },
 
-    DELETE(ctx: ActionContext<any, any>, model: T) {
+    delete(ctx: ActionContext<any, any>, model: T) {
       ctx.commit('DELETE', model);
     },
   };
