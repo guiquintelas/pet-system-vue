@@ -17,7 +17,7 @@
             outlined
             v-mask="masks.cpf"
             v-model="model.id"
-            :rules="[validations.required, validations.cpf]"
+            :rules="[validations.required, validations.cpf, validateCPF]"
           ></v-text-field>
         </v-col>
 
@@ -118,6 +118,27 @@ export default Vue.extend({
       store.commit.snack.OPEN({
         text: `User ${model.name} deleted successfully`,
       });
+    },
+
+    validateCPF(cpf: string | undefined) {
+      if (!cpf) {
+        return true;
+      }
+
+      // sanitize cpf
+      cpf = cpf.replace(/[^\d]+/g, '');
+
+      if (cpf && cpf.length !== 11) {
+        return true;
+      }
+
+      const user = store.getters.user.filterById(cpf);
+
+      if (user) {
+        return 'CPF already exists!';
+      }
+
+      return true;
     },
   },
 });
