@@ -1,23 +1,46 @@
 <template>
   <v-app>
+    <v-navigation-drawer
+      v-if="$vuetify.breakpoint.smAndDown"
+      v-model="drawer"
+      app
+      floating>
+      <v-list dense nav>
+        <v-list-item
+          v-for="menu in menus" :key="menu.name"
+          exact
+          :to="{ name: menu.name }">
+          <v-list-item-content>
+            <v-list-item-title>{{ menu.text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-app-bar
       app
       color="primary"
       dark
     >
+      <v-app-bar-nav-icon
+        v-if="$vuetify.breakpoint.smAndDown"
+        @click.stop="drawer = !drawer" />
+
       <v-toolbar-title>
         {{ title }}
       </v-toolbar-title>
 
-      <v-btn
-        v-for="menu in menus" :key="menu.name"
-        class="ml-5"
-        depressed
-        exact
-        color="primary"
-        :to="{ name: menu.name }">
-        {{ menu.text }}
-      </v-btn>
+      <template v-if="!$vuetify.breakpoint.smAndDown">
+        <v-btn
+          v-for="menu in menus" :key="menu.name"
+          class="ml-5"
+          depressed
+          exact
+          color="primary"
+          :to="{ name: menu.name }">
+          {{ menu.text }}
+        </v-btn>
+      </template>
     </v-app-bar>
 
     <v-content>
@@ -102,6 +125,10 @@ import store from '@/store/store';
 
 export default Vue.extend({
   name: 'App',
+
+  data: () => ({
+    drawer: false,
+  }),
 
   computed: {
     title() {
