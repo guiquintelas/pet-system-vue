@@ -16,7 +16,7 @@
           key="btn-back"
           v-else
           exact
-          @click="backPage()">
+          @click="$store.direct.dispatch.goBack()">
           <v-icon left>mdi-arrow-left</v-icon>
           GO BACK
         </v-btn>
@@ -86,7 +86,7 @@
               <v-btn
                 text
                 exact
-                @click="backPage()">
+                @click="$store.direct.dispatch.goBack()">
                 CANCEL
               </v-btn>
 
@@ -115,7 +115,6 @@ import { PageType } from '../types/pet-model-page';
 
 export default Vue.extend({
   name: 'PetModelPage',
-
   components: {
     PetPage,
   },
@@ -188,7 +187,7 @@ export default Vue.extend({
       }
 
       this.$emit(this.type, this.model);
-      this.backPage();
+      store.dispatch.goBack();
     },
 
     onDelete(item: any) {
@@ -196,10 +195,6 @@ export default Vue.extend({
         text: 'Are you sure you want to delete this entity?',
         okFunction: () => this.$emit('delete', item),
       });
-    },
-
-    backPage() {
-      window.history.back();
     },
   },
 });

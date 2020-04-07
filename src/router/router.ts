@@ -2,6 +2,7 @@ import Vue, { ComponentOptions } from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import { PageType } from '@/types/pet-model-page';
 import { flatten } from 'lodash';
+import store from '@/store/store';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -50,30 +51,43 @@ function usePetModelRoute(
   name: string,
   component: ComponentOptions<Vue> | typeof Vue | Vue.AsyncComponent,
 ) {
-  return [
-    {
-      path: `/${name}`,
-      name,
-      component,
-      props: {
-        type: PageType.List,
-      },
+  const baseRoute = {
+    path: `/${name}`,
+    name,
+    component,
+    props: {
+      type: PageType.List,
     },
+    meta: {
+      base: true,
+    },
+  };
+
+  return [
+    baseRoute,
     {
       path: `/${name}/create`,
+      name: `Create ${name}`,
       component,
       props: {
         type: PageType.Create,
       },
+      meta: {
+        parent: baseRoute,
+      },
     },
     {
       path: `/${name}/:modelId/update/`,
+      name: `Update ${name}`,
       component,
       props: {
         type: PageType.Update,
       },
+      meta: {
+        parent: baseRoute,
+      },
     },
-  ];
+  ] as RouteConfig[];
 }
 
 
@@ -82,6 +96,9 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+    meta: {
+      base: true,
+    },
   },
 
   // create all PetModel routes
@@ -100,6 +117,27 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name) {
+    const breadcrumb = {
+      text: to.name,
+    };
+
+    if (to.meta.base) {
+      store.dispatch.setBaseBreadcrumb(breadcrumb);
+    } else if (to.meta.parent && store.state.main.breadcrumbs.length === 0) {
+      store.dispatch.addBreadcrumbs({
+        text: to.meta.parent.name,
+      });
+      store.dispatch.addBreadcrumbs(breadcrumb);
+    } else {
+      store.dispatch.addBreadcrumbs(breadcrumb);
+    }
+  }
+
+  next();
 });
 
 export default router;

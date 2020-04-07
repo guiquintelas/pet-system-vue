@@ -1,5 +1,15 @@
 import { defineModule } from 'direct-vuex';
 import { petModelRoutes } from '@/router/router';
+import { startCase } from 'lodash';
+
+export type Breadcrumb = {
+  disabled?: boolean;
+  exact?: boolean;
+  href?: string;
+  link?: boolean;
+  to?: object;
+  text: string;
+}
 
 export interface State {
   title: string;
@@ -9,14 +19,7 @@ export interface State {
     text: string;
   }>;
 
-  breadcrumbs: Array<{
-    disabled: boolean;
-    exact: boolean;
-    href: string;
-    link: boolean;
-    text: string | number;
-    to: string | object;
-  }>;
+  breadcrumbs: Breadcrumb[];
 }
 
 export default defineModule({
@@ -28,11 +31,47 @@ export default defineModule({
 
       ...petModelRoutes,
     ],
+
+    breadcrumbs: [],
   } as State,
 
   mutations: {
-    SET_TITLE(state, title: string) {
-      state.title = title;
+    ADD_BREADCRUMBS(state, breadcrumb: Breadcrumb) {
+      state.breadcrumbs.push(breadcrumb);
+    },
+
+    REMOVE_LAST_BREADCRUMB(state) {
+      state.breadcrumbs.pop();
+    },
+
+    CLEAR_BREADCRUMBS(state) {
+      state.breadcrumbs = [];
+    },
+  },
+
+  actions: {
+    addBreadcrumbs(ctx, breadcrumb: Breadcrumb) {
+      breadcrumb.text = startCase(breadcrumb.text);
+      breadcrumb.link = false;
+      breadcrumb.disabled = true;
+
+      const doesntExist = ctx.state.breadcrumbs.filter(
+        (el: Breadcrumb) => el.text === breadcrumb.text,
+      ).length === 0;
+
+      if (doesntExist) {
+        ctx.commit('ADD_BREADCRUMBS', breadcrumb);
+      }
+    },
+
+    setBaseBreadcrumb(ctx, breadcrumb) {
+      ctx.commit('CLEAR_BREADCRUMBS');
+      ctx.dispatch('addBreadcrumbs', breadcrumb);
+    },
+
+    goBack(ctx) {
+      ctx.commit('REMOVE_LAST_BREADCRUMB');
+      window.history.back();
     },
   },
 });
