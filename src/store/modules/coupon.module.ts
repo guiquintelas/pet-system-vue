@@ -20,12 +20,12 @@ export default defineModule({
         discount: 20,
       },
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'cup30',
         code: 'CUP30',
         discount: 30,
       },
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'cup50',
         code: 'CUP50',
         discount: 50,
       },

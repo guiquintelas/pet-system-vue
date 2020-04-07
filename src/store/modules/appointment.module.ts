@@ -18,7 +18,7 @@ export default defineModule({
   state: {
     models: [
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'dgxr1',
         userId: '10112565760',
         petId: 'fuba',
         vaccineId: 'feline-aids',
@@ -26,7 +26,7 @@ export default defineModule({
         createdAt: '2020-04-06',
       },
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'kuwkb',
         userId: '10112565760',
         petId: 'miguinho',
         vaccineId: 'feline-aids',

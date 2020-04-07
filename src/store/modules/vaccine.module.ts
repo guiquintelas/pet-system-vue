@@ -24,14 +24,14 @@ export default defineModule({
         createdAt: '2020-03-16',
       },
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'rabies',
         name: 'Rabies',
         price: 150,
         showNotification: false,
         createdAt: '2020-03-16',
       },
       {
-        id: Math.random().toString(36).substring(3, 8),
+        id: 'parvoviros',
         name: 'Parvoviros',
         price: 150,
         showNotification: true,
