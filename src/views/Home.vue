@@ -7,6 +7,7 @@
         cols="12"
         sm="6">
         <v-alert
+          elevation="2"
           type="info">
           The vaccine
           <router-link
