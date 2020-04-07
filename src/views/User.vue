@@ -1,5 +1,6 @@
 <template>
   <PetModelPage
+    key="user"
     title="Users"
     newModelBtnText="New User"
     module="user"

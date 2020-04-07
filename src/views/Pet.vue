@@ -1,5 +1,6 @@
 <template>
   <PetModelPage
+    key="pet"
     title="Pets"
     newModelBtnText="New Pet"
     module="pet"

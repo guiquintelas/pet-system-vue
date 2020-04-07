@@ -1,5 +1,6 @@
 <template>
   <PetModelPage
+    key="vaccine"
     title="Vaccines"
     newModelBtnText="New Vaccine"
     module="vaccine"

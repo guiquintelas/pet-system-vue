@@ -1,5 +1,6 @@
 <template>
   <PetModelPage
+    key="coupon"
     title="Coupons"
     newModelBtnText="New Coupon"
     module="coupon"
