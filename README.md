@@ -1,29 +1,15 @@
-# vue-typescript
+# pet-system-js
 
-## Project setup
-```
-yarn install
-```
+This is [pet-system-spring](https://github.com/guiquintelas/pet-system-spring) rewrite in vue, using typescript, vuex and vuetify
+ 
+![Image](/static/vue-print.png)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### [💻 Live Demo](https://guiquintelas.github.io/pet-system-vue/)
 
-### Compiles and minifies for production
-```
-yarn build
-```
+# Features
+  - Fully typed vuex store using [direct-vuex](https://github.com/paleo/direct-vuex)
+  - CRUD abstraction for better productivity
+  - Responsive tables provided by [vuetify](https://github.com/vuetifyjs/vuetify)
+  - eslint ready
 
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ 
